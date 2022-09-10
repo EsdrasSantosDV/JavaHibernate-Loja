@@ -1,8 +1,32 @@
 package model;
 
-public enum Categoria {
-    CELULARES,
-    INFORMATICA,
-    LIVROS;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="categorias")
+public class Categoria {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
+    private Long id;
+    @Column(name="nome")
+    private String nome;
+
+
+    public Categoria(String nome) {
+        this.nome = nome;
+    }
+
+    public Categoria() {
+
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 }

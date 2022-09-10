@@ -22,8 +22,8 @@ public class Produto {
     @Column(name="dataCadastro")
     private LocalDate dataCadastro=LocalDate.now();
 
-    @Column(name="categoria")
-    @Enumerated(EnumType.STRING)
+
+    @ManyToOne
     private Categoria categoria;
 
     public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria) {
@@ -31,6 +31,10 @@ public class Produto {
         this.descricao = descricao;
         this.preco = preco;
         this.categoria = categoria;
+    }
+
+    public Produto() {
+
     }
 
     public LocalDate getDataCadastro() {
