@@ -7,7 +7,8 @@
                 <property name="javax.persistence.jdbc.user" value="esdras"/>
                 <property name="javax.persistence.jdbc.password" value="Latveria67"/>
                 <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
-            </properties>        
+            </properties>
+            
 
 
 
