@@ -41,4 +41,13 @@ public class PedidoDao {
         String jpql="SELECT p FROM Pedido p";
         return em.createQuery(jpql, Pedido.class).getResultList();
     }
+
+    public BigDecimal valorTotalVendido()
+    {
+        String jpql="SELECT SUM(p.valorTotal) FROM Pedido p";
+        return  em.createQuery(jpql,BigDecimal.class)
+                .getSingleResult();
+    }
+
+
 }

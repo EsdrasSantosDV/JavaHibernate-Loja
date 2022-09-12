@@ -16,7 +16,7 @@ public class Pedido {
     private Long id;
 
     @Column(name="valor_total")
-    private BigDecimal valorTotal;
+    private BigDecimal valorTotal=BigDecimal.ZERO;
 
     @Column(name="data")
     private LocalDate data=LocalDate.now();
@@ -41,7 +41,10 @@ public class Pedido {
     public void adicionarItem(ItemPedido item)
     {
         item.setPedido(this);
+
         this.itens.add(item);
+        //AUMENTANDO O VALOR TOTAL
+        this.valorTotal=this.valorTotal.add(item.getValor());
     }
 
     public Long getId() {
