@@ -16,7 +16,7 @@ public class ItemPedido {
     private BigDecimal precoUnitario;
 
     @Column(name="quantidade")
-    private int quantiade;
+    private int quantidade;
 
 
     //ESTAMOS MAPEANDO DESSE LADO E DO OUTRO
@@ -26,8 +26,8 @@ public class ItemPedido {
     @ManyToOne
     private Produto produto;
 
-    public ItemPedido(int quantiade, Pedido pedido, Produto produto) {
-        this.quantiade = quantiade;
+    public ItemPedido(int quantidade, Pedido pedido, Produto produto) {
+        this.quantidade = quantidade;
         this.pedido = pedido;
         this.precoUnitario=produto.getPreco();
         this.produto = produto;
@@ -53,12 +53,12 @@ public class ItemPedido {
         this.precoUnitario = precoUnitario;
     }
 
-    public int getQuantiade() {
-        return quantiade;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setQuantiade(int quantiade) {
-        this.quantiade = quantiade;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
     public Pedido getPedido() {
@@ -79,6 +79,6 @@ public class ItemPedido {
 
     public BigDecimal getValor()
     {
-        return  precoUnitario.multiply(new BigDecimal(quantiade));
+        return  precoUnitario.multiply(new BigDecimal(quantidade));
     }
 }

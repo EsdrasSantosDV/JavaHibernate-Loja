@@ -1,6 +1,7 @@
 package testes;
 
 import Util.JPAUtil;
+import Vo.RelatoriodeVendasVo;
 import dao.CategoriaDao;
 import dao.ClienteDao;
 import dao.PedidoDao;
@@ -9,6 +10,7 @@ import model.*;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
+import java.util.List;
 
 public class CadastrodePedido {
     public static void main(String[] args) {
@@ -30,7 +32,8 @@ public class CadastrodePedido {
 
         BigDecimal totalVendido=daopedido.valorTotalVendido();
         System.out.println("Valor total:"+totalVendido);
-
+        List<RelatoriodeVendasVo> relatorio=daopedido.relatorioDeVendas();
+        relatorio.forEach(System.out::println);
     }
 
     private static void PopularBanco() {

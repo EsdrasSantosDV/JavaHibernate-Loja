@@ -1,5 +1,6 @@
 package dao;
 
+import Vo.RelatoriodeVendasVo;
 import model.Pedido;
 import model.Produto;
 
@@ -49,5 +50,32 @@ public class PedidoDao {
                 .getSingleResult();
     }
 
+//    public List<RelatoriodeVendasVo> relatoriodeVendas()
+//    {
+//        //TEM QUE MANDAR O PACKAGE NA QUERRY NO NEW
+//        String jpql="SELECT new Vo.RelatoriodeVendasVo(" +
+//                "produto.nome, " +
+//                "SUM(item.quantidade)," +
+//                "MAX(pedido.data)) " +
+//                "FROM Pedido pedido " +
+//                "JOIN  pedido.itens item " +
+//                "JOIN item.produto produto " +
+//                "GROUP BY produto.nome " +
+//                "ORDER BY item.quantidade DESC ";
+//        return em.createQuery(jpql,RelatoriodeVendasVo.class).getResultList();
+//    }
 
+    public List<RelatoriodeVendasVo> relatorioDeVendas() {
+        String jpql = "SELECT new Vo.RelatoriodeVendasVo("
+                + "produto.nome, "
+                + "SUM(item.quantidade), "
+                + "MAX(pedido.data)) "
+                + "FROM Pedido pedido "
+                + "JOIN pedido.itens item "
+                + "JOIN item.produto produto "
+                + "GROUP BY produto.nome "
+                + "ORDER BY item.quantidade DESC";
+        return em.createQuery(jpql, RelatoriodeVendasVo.class)
+                .getResultList();
+    }
 }
