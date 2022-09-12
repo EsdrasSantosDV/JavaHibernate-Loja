@@ -20,6 +20,7 @@ public class CategoriaDao {
     }
 
     public void atualizar(Categoria categoria){
+
         this.em.merge(categoria);
     }
 
@@ -29,5 +30,7 @@ public class CategoriaDao {
         categoria=em.merge(categoria);
         this.em.remove(categoria);
     }
+
+
 
 }
