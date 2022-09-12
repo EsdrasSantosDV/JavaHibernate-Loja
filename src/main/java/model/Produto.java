@@ -7,6 +7,10 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name="produtos")
+
+//COMO FIZ NA STEFANINI O QUE MUDA QUE ESSE E JPQL E NAMED QUERIE
+@NamedQuery(name="Produto.produtosPorCategoria",
+query="SELECT p FROM Produto p  WHERE p.categoria.nome=:nome  ")
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
