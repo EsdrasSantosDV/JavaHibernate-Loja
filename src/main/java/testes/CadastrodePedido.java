@@ -29,11 +29,15 @@ public class CadastrodePedido {
         PedidoDao daopedido=new PedidoDao(em);
         daopedido.cadastrar(pedido);
         em.getTransaction().commit();
+        Pedido pedido2=daopedido.buscarPedidoporCLiente(1l);
+
 
         BigDecimal totalVendido=daopedido.valorTotalVendido();
         System.out.println("Valor total:"+totalVendido);
         List<RelatoriodeVendasVo> relatorio=daopedido.relatorioDeVendas();
         relatorio.forEach(System.out::println);
+        em.close();
+        System.out.println(pedido2.getCliente().getNome());
     }
 
     private static void PopularBanco() {

@@ -78,4 +78,15 @@ public class PedidoDao {
         return em.createQuery(jpql, RelatoriodeVendasVo.class)
                 .getResultList();
     }
+
+    //PRA EVITAR TOMAR LAZY EXCEPTION
+    //PQ VC TA PXUANDO OS DADOS DE UM RELACIONAMENTO DO PEDIDO SO QUE NO CASO O ENTITY MANAGER FOI FECHADO
+    //PRA EVITAR ISSO FAZEMOS O SEGUINTE
+
+    //JOIN FETCH QUER DIZER JA TU TA BUSCANDO UM LAZY E TRANSFORMANDO ELE NUM EAGER
+    public Pedido buscarPedidoporCLiente(Long id)
+    {
+        return em.createQuery("SELECT p FROM Pedido p JOIN FETCH p.cliente WHERE p.id=:id", Pedido.class).setParameter("id",id).getSingleResult();
+    }
+
 }
