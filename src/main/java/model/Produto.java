@@ -11,6 +11,10 @@ import java.time.LocalDate;
 //COMO FIZ NA STEFANINI O QUE MUDA QUE ESSE E JPQL E NAMED QUERIE
 @NamedQuery(name="Produto.produtosPorCategoria",
 query="SELECT p FROM Produto p  WHERE p.categoria.nome=:nome  ")
+//O INHERITANTANCE QUER DIZER QUE ESTAMOS CRIANDO UMA HERANÇA DESSA ENTIDADE
+//TEMOS A ESTRATEGIA SINGLE TABLE QUE VAI CRIAR UMA SO TABELA
+//TEMOS A ESTRATEGIA JOINED QUE VAI CRIAR UAM TABELA FILHA SEPARADA
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
