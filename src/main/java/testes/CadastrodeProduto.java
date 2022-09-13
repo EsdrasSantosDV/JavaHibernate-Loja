@@ -20,7 +20,7 @@ public class CadastrodeProduto {
         EntityManager em= JPAUtil.getEntityManager();
         ProdutoDao daoproduto=new ProdutoDao(em);
         Produto p=daoproduto.buscarPorId(id);
-
+        daoproduto.buscarPorParametrosPorCriteria("XIAOMI",null,null);
         System.out.println(p.getPreco());
 
         List<Produto> todos=daoproduto.buscarporNomedaCategoria("CELULARES2");
